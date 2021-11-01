@@ -37,7 +37,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 //THIS IS THE MANUAL SNAP GUI
-public class snapManualGUI implements ActionListener {
+public class SnapManualGUI implements ActionListener {
 	
 	static JFrame frame;
 //			private JFrame frameV;
@@ -131,15 +131,15 @@ public class snapManualGUI implements ActionListener {
 	private JPanel panelV;
 	private JTextField valdBox;
 	
-	public snapManualGUI() {
+	public SnapManualGUI() {
 
 //				INITIALIZE VARIABLES
-		        frame = new JFrame("JFrame Example");
+		        frame = new JFrame("MMMM: Snapchat Menu");
 		        mp = new JPanel();
 		        panel0_5 = new JPanel();  
 		        panel0_6 = new JPanel();  
 		        panel0_8 = new JPanel();  
-		        panel = new JPanel();  
+		        panel = new JPanel(); 
 		        panel1_5 = new JPanel();  
 		        panel2 = new JPanel();  
 		        panel2_3 = new JPanel();  
@@ -658,7 +658,6 @@ public class snapManualGUI implements ActionListener {
 //				if (!f.exists()){
 //				    f.mkdirs();
 //				}
-				new snapManualGUI();
 //				RunnableTest R1 = new RunnableTest("Thread-1");
 //				R1.start();
 //				RunnableTest R2 = new RunnableTest("Thread-2");

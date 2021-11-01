@@ -16,11 +16,12 @@ public class RunnableThread implements Runnable {
 		try {
 			if(threadName == "verifysnap") {
 				System.out.println("VERIFYING SNAPCHAT...");
-//				THIS CODE WILL VERIFY SNAPCHAT!
+//				THIS CODE WILL VERIFY SNAPCHAT!void
 				vars.snapverified = true;
 				if(vars.snapverified) {
 					System.out.println("SNAPCHAT VERIFIED!");
-					new snapManualGUI();
+					new MainSnapGUI();
+					start.startGUI.frame.dispose();
 				} else {
 					System.out.println("SNAPCHAT IS NOT VERIFIED!");
 				}

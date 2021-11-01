@@ -1,40 +1,38 @@
 package mmmm;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-//THIS IS THE STARTING GUI WHEN YOU LAUNCH THE PROGRAM
-public class StartGUI {
-	
-	public JFrame frame;
-	private JPanel mp, panel1;
+public class MainSnapGUI {
+
+	private JFrame frame;
+	public JPanel mp, panel1, panel2;
 	private JLabel title;
-	private JButton snapchat, close;
+	private JButton menuOrder, fileOrder, back;
 	
-	public StartGUI() {
+	public MainSnapGUI() {
 //		INITIALIZE VARIABLES
-        frame = new JFrame("Multi Media Marketing Menu");
+        frame = new JFrame("MMMM: Snapchat");
         mp = new JPanel();
         panel1 = new JPanel();  
-        JLabel title = new JLabel("Snapchat Networker");  
-        JButton snapchat = new JButton("Open Snapchat Networker");  
-        JButton close = new JButton("Close");  
+        panel2 = new JPanel();  
+        JLabel title = new JLabel("WELCOME TO SNAPCHAT NETWORKER");  
+        JButton menuOrder = new JButton("Order With Menu");  
+        JButton fileOrder = new JButton("Order With File");  
+        JButton back = new JButton("Back");
         
 //        ORGANIZE
-        JPanel[] panelArr = {mp, panel1};
+        JPanel[] panelArr = {mp, panel1, panel2};
         JLabel[] labelArr = {title};
-        JButton[] buttonArr = {snapchat, close};
+        JButton[] buttonArr = {menuOrder, fileOrder};
         
 //        SET PROPERTIES
         for(int i=0;i<panelArr.length;i++) {
@@ -54,24 +52,36 @@ public class StartGUI {
         title.setFont(new Font(null, Font.BOLD, 22));
         
 //		SETUP BUTTON ACTION LISTENERS
-        snapchat.addActionListener(new ActionListener() {
+        menuOrder.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				System.out.println("test1");
-				RunnableThread verifySnap = new RunnableThread("verifysnap");
-				verifySnap.run();
+				new SnapManualGUI();
+				frame.dispose();
+			}
+
+        });
+        
+        back.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				start.startGUI = new StartGUI();
+				frame.dispose();
 			}
 
         });
         
 //        PANEL MAKEUP
         panel1.add(title);  
-        panel1.add(snapchat);  
-        panel1.add(close);  
+        panel1.add(back);
+        
+        panel2.add(menuOrder);  
+        panel2.add(fileOrder);  
         
 //        MAIN PANEL MAKEUP
         mp.add(panel1);
+        mp.add(panel2);
         
 //        FRAME MAKEUP
         frame.add(mp);  
@@ -85,7 +95,7 @@ public class StartGUI {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new StartGUI();
+		new MainSnapGUI();
 	}
 
 }
