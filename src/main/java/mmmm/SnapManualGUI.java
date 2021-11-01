@@ -88,6 +88,7 @@ public class SnapManualGUI implements ActionListener {
 	private JButton valdBtn;
 	private JButton FEBtn;
 	private JButton getLogBtn;
+	private JButton back;
 	private JTextField tF1;
 	private JTextField tF2;
 	private JTextField tF3;
@@ -181,6 +182,7 @@ public class SnapManualGUI implements ActionListener {
 //		        JButton valdBtn = new JButton("Send");  
 		        JButton clearOBtn = new JButton("Clear Orders");  
 		        JButton FEBtn = new JButton("Open Folder");  
+		        JButton back = new JButton("Back");
 		        final JButton runBtn = new JButton("RUN ORDERS");  
 		        JButton instructBtn = new JButton("?");  
 		        tF1 = new JTextField();
@@ -197,7 +199,7 @@ public class SnapManualGUI implements ActionListener {
 //		        ORGANIZE
 		        JPanel[] panelArr = {mp, panel0_5, panel0_6, panel0_8, panel, panel1_5, panel2, panel2_3, panel2_5, panel3, panel4};
 		        JLabel[] labelArr = {mainLog, savePLab, loadPLab, labelTitle, label, dvnLab, label2, labelx, labelNeac, labelPh, orderS, emptySpace};
-		        JButton[] buttonArr = {getLogBtn, addPicBtn, locpBtn, FEBtn, savePBtn, loadPBtn, openApmBtn, closeApmBtn, instructBtn, clrBtn, emlBtn, rphBtn, unlkBtn, loqaBtn, mkacBtn, clearOBtn, runBtn};
+		        JButton[] buttonArr = {getLogBtn, addPicBtn, locpBtn, FEBtn, savePBtn, loadPBtn, openApmBtn, closeApmBtn, instructBtn, clrBtn, emlBtn, rphBtn, unlkBtn, loqaBtn, mkacBtn, clearOBtn, runBtn, back};
 		        final JTextField[] tFArr = {savePTF, tF1, tF2, tF3, tFPh, tFN, dvnTF};
 //				JComponent[][] mainColorArr = {panelArr, panelArr, labelArr, labelArr, buttonArr, buttonArr, tFArr, tFArr};
 //				Color[] mainColorArr = {panelBGColor, panelFGColor, labelBGColor, labelFGColor, btnBGColor, btnFGColor, tfBGColor, tfFGColor};
@@ -557,9 +559,19 @@ public class SnapManualGUI implements ActionListener {
 //		        		}
 //		        	}
 //		        });
+		        back.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						new MainSnapGUI();
+						frame.dispose();
+					}
+
+		        });
 		        
 //		        PANEL MAKEUP
-		        panel0_5.add(labelTitle);  
+		        panel0_5.add(labelTitle); 
+		        panel0_5.add(back);  
 		        panel0_5.add(instructBtn);  
 //		        panel0_5.add(clrBtn);  
 

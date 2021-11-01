@@ -11,20 +11,21 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MainSnapGUI {
-
+public class SnapFileGUI {
+	
 	private JFrame frame;
 	public JPanel mp, panel1, panel2;
 	private JLabel title;
 	private JButton menuOrder, fileOrder, back;
 	
-	public MainSnapGUI() {
+	public SnapFileGUI() {
+		
 //		INITIALIZE VARIABLES
-        frame = new JFrame("MMMM: Snapchat");
+        frame = new JFrame("MMMM: Snapchat Text Order");
         mp = new JPanel();
         panel1 = new JPanel();  
         panel2 = new JPanel();  
-        JLabel title = new JLabel("WELCOME TO SNAPCHAT NETWORKER");  
+        JLabel title = new JLabel("SNAPCHAT TEXT ORDER");  
         JButton menuOrder = new JButton("Order With Menu");  
         JButton fileOrder = new JButton("Order With File");  
         JButton back = new JButton("Back");
@@ -56,8 +57,7 @@ public class MainSnapGUI {
 
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				new SnapManualGUI();
-				frame.dispose();
+
 			}
 
         });
@@ -66,8 +66,7 @@ public class MainSnapGUI {
 
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				new SnapFileGUI();
-				frame.dispose();
+
 			}
 
         });
@@ -76,7 +75,7 @@ public class MainSnapGUI {
 
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				start.startGUI = new StartGUI();
+				new MainSnapGUI();
 				frame.dispose();
 			}
 
@@ -100,12 +99,7 @@ public class MainSnapGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);  
         title.requestFocus();
-
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		new MainSnapGUI();
+		
 	}
 
 }
