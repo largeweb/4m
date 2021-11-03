@@ -36,68 +36,32 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.remote.MobileBrowserType;
+import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.touch.offset.PointOption;
+
 //THIS IS THE MANUAL SNAP GUI
 public class SnapManualGUI implements ActionListener {
 	
-	static JFrame frame;
-//			private JFrame frameV;
-	private JPanel mp;
-//			private JPanel mpV;
-	private JPanel panel0_5;
-	private JPanel panel0_6;
-	private JPanel panel0_8;
-	private JPanel panel;
-	private JPanel panel1_5;
-//			private JPanel panelV;
-	private JPanel panel2;
-	private JPanel panel2_3;
-	private JPanel panel2_5;
-	private JPanel panel3;
-	private JPanel panel4;
-	private JPanel panel5;
-	private JLabel labelTitle;
-	private JLabel checkApmLab;
-	private JLabel label;
-	private JLabel label2;
-	private JLabel labelx;
-	private JLabel labelNeac;
-	private JLabel labelVald;
-	private JLabel labelPh;
-	private JLabel orderS;
-	private JLabel runLog;
-	private JLabel dvnLab;
-	private JLabel savePLab;
-	private JLabel loadPLab;
-	private JLabel mainLog;
-	private JLabel leftTDLab;
-	private JButton savePBtn;
-	private JButton loadPBtn;
-	private JButton instructBtn;
-	private JButton findSnapBtn;
-	private JButton openApnBtn;
-	private JButton closeApmBtn;
-	private JButton checkApmBtn;
-	private JButton clrBtn;
-	private JButton emlBtn;
-	private JButton rphBtn;
-	private JButton unlkBtn;
-	private JButton loqaBtn;
-	private JButton addPicBtn;
-	private JButton locpBtn;
-	private JButton mkacBtn;
-	private JButton valdBtn;
-	private JButton FEBtn;
-	private JButton getLogBtn;
-	private JButton back;
-	private JTextField tF1;
-	private JTextField tF2;
-	private JTextField tF3;
-	private JTextField tFPh;
-	private JTextField tFN;
-	private JTextField dvnTF;
-	private JTextField savePTF;
-//			private JTextField valdBox;
+	private JFrame frame;
+	private JPanel mp, panel0_5, panel0_6, panel0_8, panel, panel1_5, panel2, panel2_3, panel2_5, panel3, panel4, panel5;
+	private JLabel labelTitle, checkApmLab, label, label2, labelx, labelNeac, labelVald, labelPh, orderS, runLog, dvnLab, savePLab, loadPLab, mainLog, leftTDLab;
+	private JButton bigTest, savePBtn, loadPBtn, instructBtn, findSnapBtn, openApnBtn, closeApmBtn, checkApmBtn, clrBtn, emlBtn, rphBtn, unlkBtn, loqaBtn, addPicBtn, locpBtn, mkacBtn, valdBtn, FEBtn, getLogBtn, back;
+	private JTextField tF1, tF2, tF3, tFPh, tFN, dvnTF, savePTF;
 	private JComboBox loadBox;
+	
 	private String os = "";
 	private String dvN;
 //			private String currentTask = "";
@@ -131,6 +95,8 @@ public class SnapManualGUI implements ActionListener {
 	private JPanel mpV;
 	private JPanel panelV;
 	private JTextField valdBox;
+	
+	private Emulator emu;
 	
 	public SnapManualGUI() {
 
@@ -183,6 +149,7 @@ public class SnapManualGUI implements ActionListener {
 		        JButton clearOBtn = new JButton("Clear Orders");  
 		        JButton FEBtn = new JButton("Open Folder");  
 		        JButton back = new JButton("Back");
+		        JButton bigTest = new JButton("TEST BUTTON");
 		        final JButton runBtn = new JButton("RUN ORDERS");  
 		        JButton instructBtn = new JButton("?");  
 		        tF1 = new JTextField();
@@ -568,11 +535,32 @@ public class SnapManualGUI implements ActionListener {
 					}
 
 		        });
+		        bigTest.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						try {
+							emu = new Emulator("testemu");
+						} catch (MalformedURLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+//						try {
+//							testemu = new Emulator("testemu");
+//						} catch (MalformedURLException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+						emu.getDriver().findElementById("com.android.chrome:id/send_report_checkbox").click();
+					}
+
+		        });
 		        
 //		        PANEL MAKEUP
 		        panel0_5.add(labelTitle); 
 		        panel0_5.add(back);  
 		        panel0_5.add(instructBtn);  
+		        panel0_5.add(bigTest);
 //		        panel0_5.add(clrBtn);  
 
 		        panel0_6.add(mainLog);  

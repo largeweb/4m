@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+//THIS IS THE GUI WITH THE SNAP GUI VIA FILE ORDER
 public class SnapFileGUI {
 	
 	private JFrame frame;

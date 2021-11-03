@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+//THE MAIN SNAP GUI MENU CLASS
 public class MainSnapGUI {
 
 	private JFrame frame;
