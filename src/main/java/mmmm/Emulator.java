@@ -38,8 +38,7 @@ public class Emulator {
     	cap.setCapability(MobileCapabilityType.DEVICE_NAME, name);
     	cap.setCapability("appActivity", "org.chromium.chrome.browser.incognito.IncognitoTabLauncher");
     	cap.setCapability("automationName", "uiautomator2");
-    	AndroidDriver<AndroidElement> driver = new AndroidDriver<AndroidElement>(url, cap);
-		this.driver = new AndroidDriver<AndroidElement>(cap);
+    	driver = new AndroidDriver<AndroidElement>(url, cap);
 	}
 	
 	public AndroidDriver<AndroidElement> getDriver() {

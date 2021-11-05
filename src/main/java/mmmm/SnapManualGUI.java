@@ -540,7 +540,7 @@ public class SnapManualGUI implements ActionListener {
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
 						try {
-							emu = new Emulator("testemu");
+							emu = new Emulator("p4a");
 						} catch (MalformedURLException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
