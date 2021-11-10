@@ -14,17 +14,13 @@ public class RunnableThread implements Runnable {
 		// TODO Auto-generated method stub
 		System.out.println("RUNNING THREAD: " + threadName);
 		try {
+			
+//			IF METHOD IS VERIFY SNAP, IF BOOL SNAPVERIFIED IS TRUE, DISPOSE OF STARTGUI AND MAKE MAINSNAPGUI
+			
 			if(threadName == "verifysnap") {
-				System.out.println("VERIFYING SNAPCHAT...");
-//				THIS CODE WILL VERIFY SNAPCHAT!void
-				vars.snapverified = true;
-				if(vars.snapverified) {
-					System.out.println("SNAPCHAT VERIFIED!");
-					new MainSnapGUI();
-					start.startGUI.frame.dispose();
-				} else {
-					System.out.println("SNAPCHAT IS NOT VERIFIED!");
-				}
+				System.out.println("RUNNING THE MAIN SNAP GUI");
+				new MainSnapGUI();
+				Main.startGUI.frame.dispose();
 			}
 		} catch (Exception e) {}
 	}

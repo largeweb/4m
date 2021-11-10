@@ -3,7 +3,7 @@ package mmmm;
 import java.awt.Color;
 
 //THIS IS THE STARTING FILE
-public class start {
+public class Main {
 	
 	public static StartGUI startGUI;
 	

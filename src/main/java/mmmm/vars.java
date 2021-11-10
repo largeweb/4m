@@ -6,11 +6,10 @@ import java.awt.Color;
 public class vars {
 	
 	public static Color panelBGColor, panelFGColor, labelBGColor, labelFGColor, btnBGColor, btnFGColor, tfBGColor, tfFGColor;
-	public static boolean snapverified;
+	public enum OrderType {LOGIN, MAKEACCOUNT, MESSAGEALL};
 	
 	public static void setup() {
 		
-		snapverified = false;
 		panelBGColor = Color.DARK_GRAY;
 		panelFGColor = null;
 		labelBGColor = null;

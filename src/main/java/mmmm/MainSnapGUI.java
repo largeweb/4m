@@ -77,7 +77,7 @@ public class MainSnapGUI {
 
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				start.startGUI = new StartGUI();
+				Main.startGUI = new StartGUI();
 				frame.dispose();
 			}
 
