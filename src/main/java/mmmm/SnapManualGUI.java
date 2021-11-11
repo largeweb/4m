@@ -51,13 +51,14 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.remote.MobileBrowserType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.touch.offset.PointOption;
+import mmmm.vars.OrderType;
 
 //THIS IS THE MANUAL SNAP GUI
 public class SnapManualGUI implements ActionListener {
 	
 	private JFrame frame;
 	private JPanel mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2;
-	private JLabel labelTitle, labelInfo1, labelInfo2, labelInfo3, labelInfo4, labelInfo5, labelInfo6;
+	private JLabel labelTitle, labelInfo1, labelInfo2, labelInfo3, labelInfo4, labelInfo5, labelInfo6, labelOrderList;
 	private JTextField tfInfo1, tfInfo2, tfInfo3, tfInfo4, tfInfo5, tfInfo6;
 	private JButton btnBigTest, btnBack, btnMakeAccount, btnUnlockWithBrowser, btnLoginQA, btnStartAppium, btnClearOrders, btnRunOrders, btnGetLog;
 	private ArrayList<Order> orderList;
@@ -85,25 +86,30 @@ public class SnapManualGUI implements ActionListener {
 		        JLabel labelInfo4 = new JLabel("Phone Number");  
 		        JLabel labelInfo5 = new JLabel("Email"); 
 		        JLabel labelInfo6 = new JLabel("Repeat Order");  
-		        JLabel labelOrderList = new JLabel("Orders: ");
+		        JLabel labelOrderList = new JLabel();
 		        
 //		        INITIALIZE BUTTONS
 		        JButton btnBigTest = new JButton("BIG TEST BUTTON");
 		        JButton btnBack = new JButton("Back");
-		        JButton btnMakeAccount = new JButton("Back");
-		        JButton btnUnlockWithBrowser = new JButton("Back");
-		        JButton btnLoginQA = new JButton("Back");
-		        JButton btnStartAppium = new JButton("Back");
-		        JButton btnClearOrders = new JButton("Back");
-		        JButton btnRunOrders = new JButton("Back");
-		        JButton btnGetLog = new JButton("Back");
+		        JButton btnMakeAccount = new JButton("Make Account");
+		        JButton btnUnlockWithBrowser = new JButton("Unlock With Browser");
+		        JButton btnLoginQA = new JButton("Login and Quick Add");
+		        JButton btnStartAppium = new JButton("Start Appium");
+		        JButton btnClearOrders = new JButton("Clear Orders");
+		        JButton btnRunOrders = new JButton("Run Orders");
+		        JButton btnGetLog = new JButton("Get Log");
 		        
 //		        INITIALIZE TEXT FIELDS
-		        JTextField tfInfo1 = new JTextField("TF1");
+		        JTextField tfInfo1 = new JTextField("Username");
+		        JTextField tfInfo2 = new JTextField("Password");
+		        JTextField tfInfo3 = new JTextField("Name");
+		        JTextField tfInfo4 = new JTextField("Phone Number");
+		        JTextField tfInfo5 = new JTextField("Email");
+		        JTextField tfInfo6 = new JTextField("Repeat Order");
 		        
 //		        ORGANIZE
 		        JPanel[] panelArr = {mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2};
-		        JLabel[] labelArr = {labelTitle, labelInfo1, labelInfo2, labelInfo3, labelInfo4, labelInfo5, labelInfo6};
+		        JLabel[] labelArr = {labelTitle, labelInfo1, labelInfo2, labelInfo3, labelInfo4, labelInfo5, labelInfo6, labelOrderList};
 		        JButton[] buttonArr = {btnBigTest, btnBack, btnMakeAccount, btnUnlockWithBrowser, btnLoginQA, btnStartAppium, btnClearOrders, btnRunOrders, btnGetLog};
 		        JTextField[] tfArr = {tfInfo1,tfInfo2, tfInfo3, tfInfo4, tfInfo5, tfInfo6};
 		        
@@ -121,8 +127,8 @@ public class SnapManualGUI implements ActionListener {
 		        	buttonArr[i].setForeground(vars.btnFGColor);
 		        };
 		        for(int i=0;i<tfArr.length;i++) {
-		        	tFArr[i].setBackground(vars.tfBGColor);
-		        	tFArr[i].setForeground(vars.tfFGColor);
+		        	tfArr[i].setBackground(vars.tfBGColor);
+		        	tfArr[i].setForeground(vars.tfFGColor);
 		        };
 		        this.orderList = new ArrayList<Order>();
 		        mp.setLayout(new BoxLayout(mp, BoxLayout.Y_AXIS));
@@ -135,13 +141,13 @@ public class SnapManualGUI implements ActionListener {
 		        tfInfo5.setPreferredSize(new Dimension(120, 30));
 		        tfInfo6.setPreferredSize(new Dimension(120, 30));
 				btnRunOrders.setForeground(Color.RED);
-				btnGetLog.setEnabled(false);
 		        
 //		        BUTTON ACTIONS
 		        btnBack.addActionListener(new ActionListener() {
 
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
+						System.out.println("Back Clicked");
 						new MainSnapGUI();
 						frame.dispose();
 					}
@@ -151,19 +157,72 @@ public class SnapManualGUI implements ActionListener {
 
 					public void actionPerformed(ActionEvent arg0) {
 //						// TODO Auto-generated method stub
-//						try {
-//							emu = new Emulator("p4a");
-//						} catch (MalformedURLException e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						}
-////						try {
-////							testemu = new Emulator("testemu");
-////						} catch (MalformedURLException e) {
-////							// TODO Auto-generated catch block
-////							e.printStackTrace();
-////						}
-//						emu.getDriver().findElementById("com.android.chrome:id/send_report_checkbox").click();
+						System.out.println("Big Test Clicked");
+					}
+
+		        });
+		        btnMakeAccount.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						System.out.println("Make Account Clicked");
+						UserDetails details = getUserDetails();
+						orderList.add(new Order(details, OrderType.SNAPMAKEACCOUNT));
+						updateOrderLabel();
+					}
+
+		        });
+		        btnUnlockWithBrowser.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						System.out.println("Unlock With Browser Clicked");
+						UserDetails details = getUserDetails();
+						orderList.add(new Order(details, OrderType.SNAPUNLOCKACCT));
+						updateOrderLabel();
+					}
+
+		        });
+		        btnLoginQA.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						System.out.println("Login and QA Clicked");
+						UserDetails details = getUserDetails();
+						orderList.add(new Order(details, OrderType.SNAPLOGINQA));
+						updateOrderLabel();
+					}
+
+		        });
+		        btnStartAppium.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						System.out.println("Start Appium Clicked");
+					}
+
+		        });
+		        btnClearOrders.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						System.out.println("Clear Orders Clicked");
+					}
+
+		        });
+		        btnRunOrders.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						System.out.println("Run Orders Clicked");
+					}
+
+		        });
+		        btnGetLog.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						System.out.println("Get Log Clicked");
 					}
 
 		        });
@@ -177,14 +236,14 @@ public class SnapManualGUI implements ActionListener {
 		        panelInfo1.add(tfInfo1);
 		        panelInfo1.add(labelInfo2);
 		        panelInfo1.add(tfInfo2);
-		        panelInfo1.add(labelInfo3);
-		        panelInfo1.add(tfInfo3);
-		        panelInfo1.add(labelInfo4);
-		        panelInfo1.add(tfInfo4);
-		        panelInfo1.add(labelInfo5);
-		        panelInfo1.add(tfInfo5);
-		        panelInfo1.add(labelInfo6);
-		        panelInfo1.add(tfInfo6);
+		        panelInfo2.add(labelInfo3);
+		        panelInfo2.add(tfInfo3);
+		        panelInfo2.add(labelInfo4);
+		        panelInfo2.add(tfInfo4);
+		        panelInfo3.add(labelInfo5);
+		        panelInfo3.add(tfInfo5);
+		        panelInfo3.add(labelInfo6);
+		        panelInfo3.add(tfInfo6);
 		        
 		        panelAction1.add(btnMakeAccount);
 		        panelAction2.add(btnUnlockWithBrowser);
@@ -217,8 +276,24 @@ public class SnapManualGUI implements ActionListener {
 
 			}
 			
-			public void setMainLog(String text) {
-//				mainLog.setText(text);
+			public UserDetails getUserDetails() {
+				UserDetails ud = new UserDetails();
+//				ud.setUsername(tfInfo1.getText());
+//				ud.setPassword(tfInfo2.getText());
+//				ud.setName(tfInfo3.getText());
+//				ud.setPhoneNum(tfInfo4.getText());
+//				ud.setEmail(tfInfo5.getText());
+				return ud;
+			}
+			
+			public void updateOrderLabel() {
+				String currentOrderString = "Orders: ";
+				for(int i=0; i<orderList.size(); i++) {
+					currentOrderString += "   ";
+					currentOrderString += orderList.get(i).getOrderType();
+					currentOrderString += "   ";
+				}
+				labelOrderList.setText(currentOrderString);
 			}
 			
 			public static void main(String[] args) {

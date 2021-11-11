@@ -9,9 +9,9 @@ public class Order {
 	private OrderType orderType;
 	private String status;
 	
-	public Order(UserDetails userDetails, OrderType snapOrderType) {
+	public Order(UserDetails userDetails, OrderType orderType) {
 		this.userDetails = userDetails;
-		this.orderType = snapOrderType;
+		this.orderType = orderType;
 		this.status = "Not started yet";
 	}
 	

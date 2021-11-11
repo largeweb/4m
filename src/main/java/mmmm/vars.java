@@ -6,7 +6,7 @@ import java.awt.Color;
 public class vars {
 	
 	public static Color panelBGColor, panelFGColor, labelBGColor, labelFGColor, btnBGColor, btnFGColor, tfBGColor, tfFGColor;
-	public enum OrderType {SNAPLOGIN, SNAPMAKEACCOUNT, SNAPMESSAGEALL, SNAPUNLOCKACCT};
+	public enum OrderType {SNAPLOGINQA, SNAPMAKEACCOUNT, SNAPMESSAGEALL, SNAPUNLOCKACCT};
 	
 	public static void setup() {
 		
