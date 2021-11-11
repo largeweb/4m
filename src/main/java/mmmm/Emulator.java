@@ -19,15 +19,18 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.remote.MobileBrowserType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.touch.offset.PointOption;
+import mmmm.vars.OrderType;
 
 //THIS CLASS MAKES EMULATOR OBJECTS WHICH CAN BE USED TO EXECUTE SNAP METHODS
 public class Emulator {
 	
 	private AndroidDriver<AndroidElement> driver;
 	private String name;
+	private boolean isActive;
 	
 	public Emulator(String name) throws MalformedURLException {
 		this.name = name;
+		this.isActive = false;
 		DesiredCapabilities cap = new DesiredCapabilities();
 ////    	cap.setCapability("appPackage", "com.snapchat.android");
 ////    	cap.setCapability("appActivity", "com.snap.mushroom.MainActivity");
@@ -41,13 +44,20 @@ public class Emulator {
     	driver = new AndroidDriver<AndroidElement>(url, cap);
 	}
 	
+	public void run(OrderType orderType) throws Exception {
+		if(this.isActive) {
+			throw new Exception("THREAD IS ALREADY ACTIVE");
+		}
+		this.isActive = true;
+		
+		
+		
+		this.isActive = false;
+	}
+	
 	public AndroidDriver<AndroidElement> getDriver() {
 		return driver;
 	}
-	
-//	public void openApp() {
-//		SnapMethods.openApp(driver, "Snapchat");
-//	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
