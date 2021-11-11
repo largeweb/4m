@@ -21,6 +21,11 @@ public class OrderManager {
 		}
 	}
 	
+	public void addOrder(Order order) {
+		orderList.add(order);
+		orderStatusList.add("Not started");
+	}
+	
 //	Get back an arraylist of strings that represent the current order statuses
 	public ArrayList<String> getLog() {
 		ArrayList<String> statusList = new ArrayList<String>();

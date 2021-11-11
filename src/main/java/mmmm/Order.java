@@ -22,5 +22,9 @@ public class Order {
 	public OrderType getOrderType() {
 		return orderType;
 	}
+	
+	public UserDetails getUserDetails() {
+		return userDetails;
+	}
 
 }

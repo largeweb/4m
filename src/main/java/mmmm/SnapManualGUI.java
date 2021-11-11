@@ -56,65 +56,29 @@ import io.appium.java_client.touch.offset.PointOption;
 public class SnapManualGUI implements ActionListener {
 	
 	private JFrame frame;
-	private JPanel mp, panel0_5, panel0_6, panel0_8, panel, panel1_5, panel2, panel2_3, panel2_5, panel3, panel4, panel5;
+	private JPanel mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2;
 	private JLabel labelTitle, checkApmLab, label, label2, labelx, labelNeac, labelVald, labelPh, orderS, runLog, dvnLab, savePLab, loadPLab, mainLog, leftTDLab;
 	private JButton bigTest, savePBtn, loadPBtn, instructBtn, findSnapBtn, openApnBtn, closeApmBtn, checkApmBtn, clrBtn, emlBtn, rphBtn, unlkBtn, loqaBtn, addPicBtn, locpBtn, mkacBtn, valdBtn, FEBtn, getLogBtn, back;
 	private JTextField tF1, tF2, tF3, tFPh, tFN, dvnTF, savePTF;
 	private JComboBox loadBox;
 	
-	private String os = "";
-	private String dvN;
-//			private String currentTask = "";
-//			private order[] orders;
-//	private ArrayList<order> orderList = new ArrayList<order>();
-	private boolean emulated = true;
-	private Runtime rt;
-	private String fileString = "/SCNconfigs/";
-//			private String fileString = "src\\test\\java\\appiumtests\\configs\\";
-	private File picFile;
-	private File configFolder = new File(fileString);
-	private File[] listOfFiles = configFolder.listFiles();
-	
-//			public String lastLog = "";
-	static Color panelBGColor = Color.DARK_GRAY;
-	static Color panelFGColor = null;
-	static Color labelBGColor = null;
-	static Color labelFGColor = Color.YELLOW;
-	static Color btnBGColor = Color.BLACK;
-	static Color btnFGColor = Color.YELLOW;
-	static Color tfBGColor = Color.GRAY;
-	static Color tfFGColor = Color.ORANGE;
-	static JPanel[] panelArr;
-//		    static JComponent[][] mainColorArr;
-	
-	
-	
-	
-	
-	static JFrame frameV;
-	private JPanel mpV;
-	private JPanel panelV;
-	private JTextField valdBox;
-	
-	private Emulator emu;
-	
 	public SnapManualGUI() {
 
-//				INITIALIZE VARIABLES
+//				INITIALIZE FRAME + PANELS
 		        frame = new JFrame("MMMM: Snapchat Menu");
 		        mp = new JPanel();
-		        panel0_5 = new JPanel();  
-		        panel0_6 = new JPanel();  
-		        panel0_8 = new JPanel();  
-		        panel = new JPanel(); 
-		        panel1_5 = new JPanel();  
-		        panel2 = new JPanel();  
-		        panel2_3 = new JPanel();  
-		        panel2_5 = new JPanel();  
-		        panel3 = new JPanel();
-		        panel4 = new JPanel();
-		        panel5 = new JPanel();
-		        final JLabel labelTitle = new JLabel("Snapchat Networker");  
+		        panelTop = new JPanel();  
+		        panelInfo1 = new JPanel();  
+		        panelInfo2 = new JPanel();  
+		        panelInfo3 = new JPanel(); 
+		        panelAction1 = new JPanel();  
+		        panelAction2 = new JPanel();  
+		        panelAction3 = new JPanel();  
+		        panelOrder1 = new JPanel();  
+		        panelOrder2 = new JPanel();
+		        
+//		        INITIALIZE LABELS
+		        JLabel labelTitle = new JLabel("Snapchat Menu");  
 		        final JLabel label = new JLabel("Username");  
 		        JLabel label2 = new JLabel("   Password");  
 		        JLabel leftTDLab = new JLabel("<html>Plans:   Add realtime log   |   Finalize Make Acct   |   Add Instructions<br>Get rid of emu/phone buttons   |   Fix Upload Pic button   |   Do testing with everything<br>Add bitmoji to acct button   |   Tag someone in story post   |   blue arrow image/username/more<br>Get support for multiple appium servers & emulators   |   Get everything hosted on web server</html>");  
@@ -164,29 +128,27 @@ public class SnapManualGUI implements ActionListener {
 		        
 		        
 //		        ORGANIZE
-		        JPanel[] panelArr = {mp, panel0_5, panel0_6, panel0_8, panel, panel1_5, panel2, panel2_3, panel2_5, panel3, panel4};
+		        JPanel[] panelArr = {mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2};
 		        JLabel[] labelArr = {mainLog, savePLab, loadPLab, labelTitle, label, dvnLab, label2, labelx, labelNeac, labelPh, orderS, emptySpace};
 		        JButton[] buttonArr = {getLogBtn, addPicBtn, locpBtn, FEBtn, savePBtn, loadPBtn, openApmBtn, closeApmBtn, instructBtn, clrBtn, emlBtn, rphBtn, unlkBtn, loqaBtn, mkacBtn, clearOBtn, runBtn, back};
 		        final JTextField[] tFArr = {savePTF, tF1, tF2, tF3, tFPh, tFN, dvnTF};
-//				JComponent[][] mainColorArr = {panelArr, panelArr, labelArr, labelArr, buttonArr, buttonArr, tFArr, tFArr};
-//				Color[] mainColorArr = {panelBGColor, panelFGColor, labelBGColor, labelFGColor, btnBGColor, btnFGColor, tfBGColor, tfFGColor};
 		        
 //		        SET PROPERTIES
 		        for(int i=0;i<panelArr.length;i++) {
-		        	panelArr[i].setBackground(panelBGColor);
-		        	panelArr[i].setForeground(panelFGColor);
+		        	panelArr[i].setBackground(vars.panelBGColor);
+		        	panelArr[i].setForeground(vars.panelFGColor);
 		        };
 		        for(int i=0;i<labelArr.length;i++) {
-		        	labelArr[i].setBackground(labelBGColor);
-		        	labelArr[i].setForeground(labelFGColor);
+		        	labelArr[i].setBackground(vars.labelBGColor);
+		        	labelArr[i].setForeground(vars.labelFGColor);
 		        };
 		        for(int i=0;i<buttonArr.length;i++) {
-		        	buttonArr[i].setBackground(btnBGColor);
-		        	buttonArr[i].setForeground(btnFGColor);
+		        	buttonArr[i].setBackground(vars.btnBGColor);
+		        	buttonArr[i].setForeground(vars.btnFGColor);
 		        };
 		        for(int i=0;i<tFArr.length;i++) {
-		        	tFArr[i].setBackground(tfBGColor);
-		        	tFArr[i].setForeground(tfFGColor);
+		        	tFArr[i].setBackground(vars.tfBGColor);
+		        	tFArr[i].setForeground(vars.tfFGColor);
 		        };
 		        mp.setLayout(new BoxLayout(mp, BoxLayout.Y_AXIS));
 		        labelTitle.setForeground(Color.YELLOW);
@@ -204,328 +166,10 @@ public class SnapManualGUI implements ActionListener {
 				rphBtn.setForeground(null);
 				runBtn.setForeground(Color.RED);
 				getLogBtn.setEnabled(false);
-				loadBox.setBackground(tfBGColor);
-				loadBox.setForeground(tfFGColor);
-//				for(int i=0;i<listOfFiles.length;i++) {
-//					loadBox.addItem(listOfFiles[i].getName());
-//				}
-//		        valdBox.setPreferredSize(new Dimension(60, 30));
+				loadBox.setBackground(vars.tfBGColor);
+				loadBox.setForeground(vars.tfFGColor);
 		        
-////		        BUTTON ACTIONS
-//				instructBtn.addActionListener(new ActionListener() {
-//					public void actionPerformed(ActionEvent e) {
-//						new instructionGUI();
-//					}
-//				});
-//				savePBtn.addActionListener(new ActionListener() {
-//					public void actionPerformed(ActionEvent e) {
-//						Properties p = new Properties();
-//						String fileName = savePTF.getText();
-//						File saveFile = new File(fileString + fileName + ".properties");
-////						File saveFile = new File("src\\test\\java\\appiumtests\\configs\\" + fileName + ".properties");
-//						try {
-//							saveFile.createNewFile();
-//							loadBox.addItem(fileName+".properties");
-//							InputStream in = new FileInputStream(saveFile);
-//							p.load(in);
-//							for(int i=0;i<tFArr.length;i++) {
-//								p.setProperty(Integer.toString(i), tFArr[i].getText());
-//							}
-//							p.store(new FileOutputStream(saveFile), fileName);
-//							mainLog.setText(fileName+".properties has been saved");
-//							mainLog.setForeground(Color.GREEN);   
-//						} catch (IOException e1) {
-//							// TODO Auto-generated catch block
-//							e1.printStackTrace();
-//						}
-//					}
-//				});
-//				loadPBtn.addActionListener(new ActionListener() {
-//					public void actionPerformed(ActionEvent e) {
-//						Properties p = new Properties();
-//						String fileName = (String) loadBox.getSelectedItem();
-//						File loadFile = new File(fileString + fileName);
-//						try {
-//							InputStream in = new FileInputStream(loadFile);
-//							p.load(in);
-//							for(int i=0;i<tFArr.length;i++) {
-//								tFArr[i].setText(p.getProperty(Integer.toString(i)).trim());
-//							}
-//							mainLog.setText(fileName+".properties has been loaded");
-//							mainLog.setForeground(Color.GREEN);   
-//						} catch (IOException e1) {
-//							// TODO Auto-generated catch block
-//							e1.printStackTrace();
-//						}
-//					}
-//				});
-////				instructBtn.addActionListener(new ActionListener() {
-////					public void actionPerformed(ActionEvent e) {
-////						
-////					}
-////				});
-//		        unlkBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		String username = tF1.getText();
-//		        		String password = tF2.getText();
-//		        		if(tF1.getText().length() == 0 || tF2.getText().length() == 0) {        			
-//		        			mainLog.setText("Fill in username and password");
-//		        			mainLog.setForeground(Color.RED);
-//		        		} else {
-//		        			mainLog.setText("Order added");
-//		        			mainLog.setForeground(Color.GREEN);        			
-//		        			os += "UNLK "+username.charAt(0)+".../"+password.charAt(0)+"... "+"    |    ";
-//		        			orderList.add(new order(1, os, 1, username, password, "", ""));
-//		        			orderS.setText("Orders (first to last) : " + os);
-//		        		}
-//		        	}
-//		        });
-//		        clrBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		new colorPickGUI();
-//		        	}
-//		        });
-//		        emlBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		emulated = true;
-//		        		emlBtn.setForeground(labelTitle.getForeground());
-//		        		emlBtn.setFont(new Font(null, Font.BOLD, 13));
-//		        		rphBtn.setForeground(null);
-//		    			mainLog.setText("Emulator Selected");
-//		    			mainLog.setForeground(Color.GREEN); 
-//		        	}
-//		        });
-//		        rphBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		emulated = false;
-//		        		emlBtn.setForeground(null);
-//		        		emlBtn.setFont(label.getFont());
-//		        		rphBtn.setForeground(labelTitle.getForeground());
-//		        		rphBtn.setFont(new Font(null, Font.BOLD, 13));
-//		    			mainLog.setText("Phone Selected");
-//		    			mainLog.setForeground(Color.GREEN); 
-//		        	}
-//		        });
-//		        loqaBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		String username = tF1.getText();
-//		        		String password = tF2.getText();
-//		        		if(tF1.getText().length() == 0 || tF2.getText().length() == 0) {        			
-//		        			mainLog.setText("Fill in username and password");
-//		        			mainLog.setForeground(Color.RED);
-//		        		} else {
-//		        			mainLog.setText("Order added");
-//		        			mainLog.setForeground(Color.GREEN);        			
-//		        		}
-//		        		int count = Integer.parseInt(tF3.getText());
-//		        		os += "LOQA "+username.charAt(0)+".../"+password.charAt(0)+"... "+"(x"+count+")    |    ";
-//		        		orderList.add(new order(2, os, count, username, password, "", ""));
-//		        		orderS.setText("Orders (first to last) : " + os);
-//		        	}
-//		        });
-//		        locpBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		String username = tF1.getText();
-//		        		String password = tF2.getText();
-//		        		if(tF1.getText().length() == 0 || tF2.getText().length() == 0) {        			
-//		        			mainLog.setText("Fill in username and password");
-//		        			mainLog.setForeground(Color.RED);
-//		        		} else {
-//		        			mainLog.setText("Order added");
-//		        			mainLog.setForeground(Color.GREEN);        			
-//		        		}
-//		        		os += "LOCP "+username.charAt(0)+".../"+password.charAt(0)+"... "+"    |    ";
-//		        		orderList.add(new order(4, os, 1, username, password, "", ""));
-//		        		orderS.setText("Orders (first to last) : " + os);
-//		        	}
-//		        });
-//		        addPicBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		try
-//		        		{
-//		        		JFileChooser jfc = new JFileChooser();
-//		        	    jfc.showDialog(null,"Please Select the PIC");
-//		        	    jfc.setVisible(true);
-//		        	    picFile = jfc.getSelectedFile();
-//		        	    System.out.println("File name "+picFile.getName());
-//		    			os += "ADDP "+picFile.getName().charAt(0)+picFile.getName().charAt(1)+picFile.getName().charAt(2)+"..."+"    |    ";
-//		    			orderList.add(new order(5, os, 1, "", "", "", ""));
-//		    			orderS.setText("Orders (first to last) : " + os);
-//		    			mainLog.setText(picFile.getName()+" to add to device is added to order queue");
-//		    			mainLog.setForeground(Color.GREEN);
-//		        		} catch(Exception ee) {
-//		        			mainLog.setText("No order added - please select a file");
-//		        			mainLog.setForeground(Color.RED);
-//		        		}
-//		        	}
-//		        });
-//		        mkacBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		String username = tF1.getText();
-//		        		String password = tF2.getText();
-//		        		String number = tFPh.getText();
-//		        		String name = tFN.getText();
-//		        		if(tF1.getText().length() == 0 || tF2.getText().length() == 0 || tFPh.getText().length() == 0) {        			
-//		        			mainLog.setText("Fill in username, password, and phone");
-//		        			mainLog.setForeground(Color.RED);
-//		        		} else {
-//		        			mainLog.setText("Order added");
-//		        			mainLog.setForeground(Color.GREEN);        			
-//		        		}
-//		        		os += "MKAC "+username.charAt(0)+".../"+password.charAt(0)+"... "+"    |    ";
-//		        		orderList.add(new order(3, os, 1, username, password, number, name));
-//		        		orderS.setText("Orders (first to last) : " + os);
-////		        		new valdGUI();
-//		        	}
-//		        });
-////		        valdBtn.addActionListener(new ActionListener() {
-////		        	public void actionPerformed(ActionEvent e) {
-////		        		valdCode = valdBox.getText();
-////		        	}
-////		        });
-//		        openApmBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		rt = Runtime.getRuntime();
-//		        		try {
-//							rt.exec("cmd.exe /c start /MIN cmd.exe /k appium");
-//							openApmBtn.setEnabled(false);
-//							openApmBtn.setText("<html><font color=yellow>Appium Opened</font></html>");
-//							runBtn.setEnabled(false);
-//							Thread.sleep(3000);
-//							runBtn.setEnabled(true);
-//		        			mainLog.setText("<html>Appium opened as a minimized task.<br><font color=orange>NOTE** appium is a separate process and does not automatically close with this program.<br>You can view this process in your taskbar.</font></html>");
-//		        			mainLog.setForeground(Color.GREEN); 
-//						} catch (IOException e1) {
-//							// TODO Auto-generated catch block
-//							e1.printStackTrace();
-//						} catch (InterruptedException e1) {
-//							// TODO Auto-generated catch block
-//							e1.printStackTrace();
-//						}
-//		        	}
-//		        });
-////		        closeApmBtn.addActionListener(new ActionListener() {
-////		        	public void actionPerformed(ActionEvent e) {
-////						rt.exit(0);
-////		        	}
-////		        });
-//		        clearOBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		orderList.removeAll(orderList);
-//		        		os = "";
-//		        		orderS.setText("Orders (first to last) : ");
-//		    			mainLog.setText("Orders Cleared");
-//		    			mainLog.setForeground(Color.GREEN); 
-//		        	}
-//		        });
-//		        FEBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		File f = new File(fileString);
-//		        		try {
-//							Runtime.getRuntime().exec("explorer.exe /select," + f);
-//						} catch (IOException e1) {
-//							// TODO Auto-generated catch block
-//							e1.printStackTrace();
-//						}
-//		        	}
-//		        });
-//		        getLogBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		if(RunnableTest.errorB == true) {
-//		        			mainLog.setText("THERE WAS AN ERROR - IS APPIUM AND EMULATOR OPEN?");
-//		        			mainLog.setForeground(Color.red);        	
-//		        			getLogBtn.setEnabled(false);
-//		        		} else {        			
-//		        			mainLog.setText(openSnap.taskLog);
-//		        		}
-//		        	}
-//		        });
-//		        runBtn.addActionListener(new ActionListener() {
-//		        	public void actionPerformed(ActionEvent e) {
-//		        		getLogBtn.setEnabled(true);
-//		        		String username = tF1.getText();
-//		        		String password = tF2.getText();
-//		        		String name = tFN.getText();
-//		        		if(orderList.size()==0) {
-//		        			mainLog.setText("No orders are queued");
-//		        			mainLog.setForeground(Color.RED); 
-//		        		}
-//		        		if(openApmBtn.isEnabled()) {
-//		        			mainLog.setText("Orders will not run if appium isn't opened");
-//		        			mainLog.setForeground(Color.ORANGE); 
-//		        		}
-//		        		for(int i=0;i<orderList.size();i++) {
-//		        			if(orderList.get(i).actionID == 1) {
-////		                		try {
-//		                			mainLog.setText("Running Orders");
-//		                			mainLog.setForeground(Color.GREEN); 
-//		                    		RunnableTest R1 = new RunnableTest("Thread-1");
-//		                    		R1.start("openBrowser", orderList.get(i).username, orderList.get(i).password, null, null, dvN, 1);
-////		                			openSnap.openBrowser(orderList.get(i).username, orderList.get(i).password, dvN, emulated);
-//////		                			currentTask.setText("Finished: "+orderList.get(i).oString);
-////		                		} catch (MalformedURLException e1) {
-////		                			currentTask.setText("Failed: "+orderList.get(i).oString);
-//		                			// TODO Auto-generated cat/ch block
-////		                			e1.printStackTrace();
-////		                		} catch (InterruptedException e1) {
-////									// TODO Auto-generated catch block
-////									e1.printStackTrace();
-////								}
-//		        			}
-//		        			if(orderList.get(i).actionID == 2) {
-//		        				for(int j=0;j<orderList.get(i).count;j++) {        					
-////		        					try {
-//		        						RunnableTest R1 = new RunnableTest("Thread-1");
-//		                        		R1.start("quickAdd", orderList.get(i).username, orderList.get(i).password, null, null, dvN, orderList.get(i).count);
-////		        						openSnap.quickAdd(openSnap.loginSnap(orderList.get(i).username, orderList.get(i).password, dvN, emulated), emulated, 5);
-////		        					} catch (Throwable e1) {
-////		        						mainLog.setText("WAS UNABLE TO RUN - CHECK IF APPIUM AND EMULATOR ARE OPEN");
-////		        						mainLog.setForeground(Color.red);
-//		        						// TODO Auto-generated catch block
-////		        						e1.printStackTrace();
-////		        					} catch (InterruptedException e1) {
-//		        						// TODO Auto-generated catch block
-////		        						e1.printStackTrace();
-////		        					} catch (Throwable e1) {
-//		        						// TODO Auto-generated catch block
-////		        						e1.printStackTrace();
-////		        					}
-//		        				}
-//		        			}
-//		        			if(orderList.get(i).actionID == 3) { 
-//		        				String number = tFPh.getText();
-////								try {
-//									RunnableTest R1 = new RunnableTest("Thread-1");
-//		                    		R1.start("makeAcct", orderList.get(i).username, orderList.get(i).password, orderList.get(i).number, orderList.get(i).name, dvN, 1);
-////									openSnap.makeAcct(orderList.get(i).username, orderList.get(i).password, orderList.get(i).number, orderList.get(i).name, dvN, emulated);
-////								} catch (Throwable e1) {
-//									// TODO Auto-generated catch block
-////									e1.printStackTrace();
-////								}
-//		        			}
-//		        			if(orderList.get(i).actionID == 4) { 
-//		        				String number = tFPh.getText();
-////		        				try {
-//		        					RunnableTest R1 = new RunnableTest("Thread-1");
-//		                    		R1.start("camSPost", orderList.get(i).username, orderList.get(i).password, null, null, dvN, 1);
-////		        					openSnap.camSPost(orderList.get(i).username, orderList.get(i).password, dvN, emulated);
-////		        				} catch (Throwable e1) {
-//		        					// TODO Auto-generated catch block
-////		        					e1.printStackTrace();
-////		        				}
-//		        			}
-//		        			if(orderList.get(i).actionID == 5) { 
-////		        				picFile;
-//		        				try {
-////		        					openSnap.pushPic(dvN, picFile);
-//		        				} catch (Throwable e1) {
-//		        					// TODO Auto-generated catch block
-//		        					e1.printStackTrace();
-//		        				}
-//		        			}
-//		        		}
-//		        	}
-//		        });
+//		        BUTTON ACTIONS
 		        back.addActionListener(new ActionListener() {
 
 					public void actionPerformed(ActionEvent arg0) {
@@ -538,113 +182,59 @@ public class SnapManualGUI implements ActionListener {
 		        bigTest.addActionListener(new ActionListener() {
 
 					public void actionPerformed(ActionEvent arg0) {
-						// TODO Auto-generated method stub
-						try {
-							emu = new Emulator("p4a");
-						} catch (MalformedURLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+//						// TODO Auto-generated method stub
 //						try {
-//							testemu = new Emulator("testemu");
+//							emu = new Emulator("p4a");
 //						} catch (MalformedURLException e) {
 //							// TODO Auto-generated catch block
 //							e.printStackTrace();
 //						}
-						emu.getDriver().findElementById("com.android.chrome:id/send_report_checkbox").click();
+////						try {
+////							testemu = new Emulator("testemu");
+////						} catch (MalformedURLException e) {
+////							// TODO Auto-generated catch block
+////							e.printStackTrace();
+////						}
+//						emu.getDriver().findElementById("com.android.chrome:id/send_report_checkbox").click();
 					}
 
 		        });
 		        
 //		        PANEL MAKEUP
-		        panel0_5.add(labelTitle); 
-		        panel0_5.add(back);  
-		        panel0_5.add(instructBtn);  
-		        panel0_5.add(bigTest);
-//		        panel0_5.add(clrBtn);  
-
-		        panel0_6.add(mainLog);  
+		        panelTop.add(labelTitle); 
+		        panelTop.add(back);  
+		        panelTop.add(bigTest);
 		        
-		        panel0_8.add(savePLab);  
-		        panel0_8.add(savePTF);  
-		        panel0_8.add(savePBtn);  
-		        panel0_8.add(loadPLab);  
-		        panel0_8.add(loadBox);  
-		        panel0_8.add(loadPBtn);  
-		        panel0_8.add(FEBtn);  
-//		        panel0_8.add(checkApmBtn);  
-//		        panel0_8.add(checkApmLab);  
-
-		        panel.add(label);  
-		        panel.add(tF1);
-		        panel.add(label2);  
-		        panel.add(tF2);
-		        panel.add(emlBtn);
-		        panel.add(rphBtn);
+		        panelInfo1.add();
+		        panelInfo2.add();
+		        panelInfo3.add();
 		        
-		        panel1_5.add(dvnLab);
-		        panel1_5.add(dvnTF);
+		        panelAction1.add();
+		        panelAction2.add();
+		        panelAction3.add();
 		        
-		        panel2.add(unlkBtn);
-		        panel2.add(emptySpace);
-		        panel2.add(loqaBtn);
-		        panel2.add(labelx);
-		        panel2.add(tF3);
-		        
-		        panel2_3.add(addPicBtn);
-		        panel2_3.add(locpBtn);
-		        
-		        panel2_5.add(labelNeac);
-		        panel2_5.add(tFN);
-		        panel2_5.add(labelPh);
-		        panel2_5.add(tFPh);
-		        panel2_5.add(mkacBtn);
-//		        panel2_5.add(labelVald);
-//		        panel2_5.add(valdBox);
-//		        panel2_5.add(valdBtn);
-		        
-		        panel3.add(orderS);
-		        
-		        panel4.add(openApmBtn);  
-//		        panel4.add(closeApmBtn);  
-		        panel4.add(clearOBtn);
-		        panel4.add(runBtn);
-		        panel4.add(getLogBtn);
-		        
-//		        panel5.add(currentTask);
-//		        panel5.add(emptySpace);
-//		        panel5.add(runLog);
-		        panel5.add(leftTDLab);
+		        panelOrder1.add();
+		        panelOrder2.add();
 		        
 //		        MAIN PANEL MAKEUP
-		        mp.add(panel0_5);
-		        mp.add(panel0_6);
-		        mp.add(panel0_8);
-		        mp.add(panel);
-//		        mp.add(panel1_5);
-		        mp.add(panel2);
-		        mp.add(panel2_3);
-		        mp.add(panel2_5);
-		        mp.add(panel3);
-		        mp.add(panel4);
-		        mp.add(panel5);
+		        mp.add(panelTop);
+		        mp.add(panelInfo1);
+		        mp.add(panelInfo2);
+		        mp.add(panelInfo3);
+		        mp.add(panelAction1);
+		        mp.add(panelAction2);
+		        mp.add(panelAction3);
+		        mp.add(panelOrder1);
+		        mp.add(panelOrder2);
 		        
 //		        FRAME MAKEUP
 		        frame.add(mp);  
-//		        frame.add(panel2);
 		        frame.setSize(700, 450);  
-//		        frame.setPreferredSize(new Dimension(400, 400));
 		        frame.setLocationRelativeTo(null);  
 		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		        frame.setVisible(true);  
 		        labelTitle.requestFocus();
 
-		        
-		        
-//		        TRY TO ADD DECORATION/COLOR
-		        
-		        
-		        
 			}
 			
 			public void setMainLog(String text) {
@@ -653,30 +243,13 @@ public class SnapManualGUI implements ActionListener {
 			
 			public static void main(String[] args) {
 				// TODO Auto-generated method stub
-//				File f = new File("/SCNconfigs/");
-////				File f = new File("src\\test\\java\\appiumtests\\configs");
-//				if (!f.exists()){
-//				    f.mkdirs();
-//				}
-//				RunnableTest R1 = new RunnableTest("Thread-1");
-//				R1.start();
-//				RunnableTest R2 = new RunnableTest("Thread-2");
-//				R2.start();
-//				new valdGUI();
+				vars.setup();
+				new SnapManualGUI();
 			}
 
 			public void actionPerformed1(ActionEvent e) {
 				// TODO Auto-generated method stub
-//				label.setText("test");
 			}
-			
-		//TESTING
-//			protected void paintComponent(Graphics g) {
-		//
-//			    super.paintComponent(g);
-//			        g.drawImage(bgImage, 0, 0, null);
-//			}
-
 
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
