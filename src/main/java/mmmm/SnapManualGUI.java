@@ -86,7 +86,7 @@ public class SnapManualGUI implements ActionListener {
 		        JLabel labelInfo4 = new JLabel("Phone Number");  
 		        JLabel labelInfo5 = new JLabel("Email"); 
 		        JLabel labelInfo6 = new JLabel("Repeat Order");  
-		        JLabel labelOrderList = new JLabel();
+		        final JLabel labelOrderList = new JLabel("Orders:");
 		        
 //		        INITIALIZE BUTTONS
 		        JButton btnBigTest = new JButton("BIG TEST BUTTON");
@@ -103,9 +103,9 @@ public class SnapManualGUI implements ActionListener {
 		        JTextField tfInfo1 = new JTextField("Username");
 		        JTextField tfInfo2 = new JTextField("Password");
 		        JTextField tfInfo3 = new JTextField("Name");
-		        JTextField tfInfo4 = new JTextField("Phone Number");
+		        JTextField tfInfo4 = new JTextField("Phone");
 		        JTextField tfInfo5 = new JTextField("Email");
-		        JTextField tfInfo6 = new JTextField("Repeat Order");
+		        final JTextField tfInfo6 = new JTextField("1");
 		        
 //		        ORGANIZE
 		        JPanel[] panelArr = {mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2};
@@ -167,8 +167,9 @@ public class SnapManualGUI implements ActionListener {
 						// TODO Auto-generated method stub
 						System.out.println("Make Account Clicked");
 						UserDetails details = getUserDetails();
-						orderList.add(new Order(details, OrderType.SNAPMAKEACCOUNT));
-						updateOrderLabel();
+						int count = Integer.parseInt(tfInfo6.getText());
+						orderList.add(new Order(details, OrderType.SNAPMAKEACCOUNT, count));
+						updateOrderLabel(labelOrderList);
 					}
 
 		        });
@@ -178,8 +179,9 @@ public class SnapManualGUI implements ActionListener {
 						// TODO Auto-generated method stub
 						System.out.println("Unlock With Browser Clicked");
 						UserDetails details = getUserDetails();
-						orderList.add(new Order(details, OrderType.SNAPUNLOCKACCT));
-						updateOrderLabel();
+						int count = Integer.parseInt(tfInfo6.getText());
+						orderList.add(new Order(details, OrderType.SNAPUNLOCKACCT, count));
+						updateOrderLabel(labelOrderList);
 					}
 
 		        });
@@ -189,8 +191,9 @@ public class SnapManualGUI implements ActionListener {
 						// TODO Auto-generated method stub
 						System.out.println("Login and QA Clicked");
 						UserDetails details = getUserDetails();
-						orderList.add(new Order(details, OrderType.SNAPLOGINQA));
-						updateOrderLabel();
+						int count = Integer.parseInt(tfInfo6.getText());
+						orderList.add(new Order(details, OrderType.SNAPLOGINQA, count));
+						updateOrderLabel(labelOrderList);
 					}
 
 		        });
@@ -207,6 +210,8 @@ public class SnapManualGUI implements ActionListener {
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
 						System.out.println("Clear Orders Clicked");
+						orderList.clear();
+						updateOrderLabel(labelOrderList);
 					}
 
 		        });
@@ -246,8 +251,8 @@ public class SnapManualGUI implements ActionListener {
 		        panelInfo3.add(tfInfo6);
 		        
 		        panelAction1.add(btnMakeAccount);
-		        panelAction2.add(btnUnlockWithBrowser);
-		        panelAction3.add(btnLoginQA);
+		        panelAction1.add(btnUnlockWithBrowser);
+		        panelAction1.add(btnLoginQA);
 		        
 		        panelOrder1.add(labelOrderList);
 		        panelOrder2.add(btnStartAppium);
@@ -286,14 +291,16 @@ public class SnapManualGUI implements ActionListener {
 				return ud;
 			}
 			
-			public void updateOrderLabel() {
+			public void updateOrderLabel(JLabel labelToChange) {
 				String currentOrderString = "Orders: ";
 				for(int i=0; i<orderList.size(); i++) {
 					currentOrderString += "   ";
 					currentOrderString += orderList.get(i).getOrderType();
+					currentOrderString += "-";
+					currentOrderString += orderList.get(i).getCount();
 					currentOrderString += "   ";
 				}
-				labelOrderList.setText(currentOrderString);
+				labelToChange.setText(currentOrderString);
 			}
 			
 			public static void main(String[] args) {

@@ -7,11 +7,13 @@ public class Order {
 	
 	private UserDetails userDetails;
 	private OrderType orderType;
+	private int count;
 	private String status;
 	
-	public Order(UserDetails userDetails, OrderType orderType) {
+	public Order(UserDetails userDetails, OrderType orderType, int count) {
 		this.userDetails = userDetails;
 		this.orderType = orderType;
+		this.count = count;
 		this.status = "Not started yet";
 	}
 	
@@ -25,6 +27,10 @@ public class Order {
 	
 	public UserDetails getUserDetails() {
 		return userDetails;
+	}
+	
+	public int getCount() {
+		return count;
 	}
 
 }
