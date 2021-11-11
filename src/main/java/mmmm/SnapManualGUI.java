@@ -57,10 +57,10 @@ public class SnapManualGUI implements ActionListener {
 	
 	private JFrame frame;
 	private JPanel mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2;
-	private JLabel labelTitle, checkApmLab, label, label2, labelx, labelNeac, labelVald, labelPh, orderS, runLog, dvnLab, savePLab, loadPLab, mainLog, leftTDLab;
-	private JButton bigTest, savePBtn, loadPBtn, instructBtn, findSnapBtn, openApnBtn, closeApmBtn, checkApmBtn, clrBtn, emlBtn, rphBtn, unlkBtn, loqaBtn, addPicBtn, locpBtn, mkacBtn, valdBtn, FEBtn, getLogBtn, back;
-	private JTextField tF1, tF2, tF3, tFPh, tFN, dvnTF, savePTF;
-	private JComboBox loadBox;
+	private JLabel labelTitle, labelInfo1, labelInfo2, labelInfo3, labelInfo4, labelInfo5, labelInfo6;
+	private JTextField tfInfo1, tfInfo2, tfInfo3, tfInfo4, tfInfo5, tfInfo6;
+	private JButton btnBigTest, btnBack, btnMakeAccount, btnUnlockWithBrowser, btnLoginQA, btnStartAppium, btnClearOrders, btnRunOrders, btnGetLog;
+	private ArrayList<Order> orderList;
 	
 	public SnapManualGUI() {
 
@@ -78,60 +78,34 @@ public class SnapManualGUI implements ActionListener {
 		        panelOrder2 = new JPanel();
 		        
 //		        INITIALIZE LABELS
-		        JLabel labelTitle = new JLabel("Snapchat Menu");  
-		        final JLabel label = new JLabel("Username");  
-		        JLabel label2 = new JLabel("   Password");  
-		        JLabel leftTDLab = new JLabel("<html>Plans:   Add realtime log   |   Finalize Make Acct   |   Add Instructions<br>Get rid of emu/phone buttons   |   Fix Upload Pic button   |   Do testing with everything<br>Add bitmoji to acct button   |   Tag someone in story post   |   blue arrow image/username/more<br>Get support for multiple appium servers & emulators   |   Get everything hosted on web server</html>");  
-		        JLabel labelx = new JLabel("x");  
-		        JLabel labelNeac = new JLabel("NEW ACCOUNT:      Name:");  
-		        JLabel labelPh = new JLabel("     Phone #:");  
-		        JLabel dvnLab = new JLabel("     Device Name:");  
-		        final JLabel orderS = new JLabel("Orders (first to last) : ");
-//		        final JLabel currentTask = new JLabel("Currently doing: ");
-		        final JLabel emptySpace = new JLabel("       |       ");
-		        final JLabel mainLog = new JLabel("");
-		        JLabel savePLab = new JLabel("Save Properties:");
-		        JLabel loadPLab = new JLabel("Load Properties:");
-//		        final JLabel runLog = new JLabel("LOG: ");
-//		        JLabel labelVald = new JLabel("     Validate Code");  
-		        final JButton emlBtn = new JButton("Emulator");  
-		        final JButton rphBtn = new JButton("Phone");  
-		        final JButton openApmBtn = new JButton("Start Appium");  
-		        final JButton getLogBtn = new JButton("Get Log");  
-		        JButton savePBtn = new JButton("Save");  
-		        JButton loadPBtn = new JButton("Load");  
-		        JButton closeApmBtn = new JButton("Close Appium");  
-		        JButton findSnapBtn = new JButton("Find Snapchat Apk");  
-		        JButton checkApmBtn = new JButton("Check Appium Status");  
-		        JButton clrBtn = new JButton("Colors");  
-		        JButton unlkBtn = new JButton("Unlock with Browser");  
-		        JButton loqaBtn = new JButton("Login & Quick Add");  
-		        JButton mkacBtn = new JButton("Make Account");  
-		        JButton addPicBtn = new JButton("Add Pic to CRoll");  
-		        JButton locpBtn = new JButton("Login & Post Last CRoll");  
-//		        JButton valdBtn = new JButton("Send");  
-		        JButton clearOBtn = new JButton("Clear Orders");  
-		        JButton FEBtn = new JButton("Open Folder");  
-		        JButton back = new JButton("Back");
-		        JButton bigTest = new JButton("TEST BUTTON");
-		        final JButton runBtn = new JButton("RUN ORDERS");  
-		        JButton instructBtn = new JButton("?");  
-		        tF1 = new JTextField();
-		        tF2 = new JTextField();
-		        tF3 = new JTextField("1");
-		        tFPh = new JTextField();
-		        tFN = new JTextField();
-		        dvnTF = new JTextField();
-		        savePTF = new JTextField();
-//		        valdBox = new JTextField();
-		        loadBox = new JComboBox();
+		        JLabel labelTitle = new JLabel("SNAPCHAT MENU");  
+		        JLabel labelInfo1 = new JLabel("Username");  
+		        JLabel labelInfo2 = new JLabel("Password");  
+		        JLabel labelInfo3 = new JLabel("Name");  
+		        JLabel labelInfo4 = new JLabel("Phone Number");  
+		        JLabel labelInfo5 = new JLabel("Email"); 
+		        JLabel labelInfo6 = new JLabel("Repeat Order");  
+		        JLabel labelOrderList = new JLabel("Orders: ");
 		        
+//		        INITIALIZE BUTTONS
+		        JButton btnBigTest = new JButton("BIG TEST BUTTON");
+		        JButton btnBack = new JButton("Back");
+		        JButton btnMakeAccount = new JButton("Back");
+		        JButton btnUnlockWithBrowser = new JButton("Back");
+		        JButton btnLoginQA = new JButton("Back");
+		        JButton btnStartAppium = new JButton("Back");
+		        JButton btnClearOrders = new JButton("Back");
+		        JButton btnRunOrders = new JButton("Back");
+		        JButton btnGetLog = new JButton("Back");
+		        
+//		        INITIALIZE TEXT FIELDS
+		        JTextField tfInfo1 = new JTextField("TF1");
 		        
 //		        ORGANIZE
 		        JPanel[] panelArr = {mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2};
-		        JLabel[] labelArr = {mainLog, savePLab, loadPLab, labelTitle, label, dvnLab, label2, labelx, labelNeac, labelPh, orderS, emptySpace};
-		        JButton[] buttonArr = {getLogBtn, addPicBtn, locpBtn, FEBtn, savePBtn, loadPBtn, openApmBtn, closeApmBtn, instructBtn, clrBtn, emlBtn, rphBtn, unlkBtn, loqaBtn, mkacBtn, clearOBtn, runBtn, back};
-		        final JTextField[] tFArr = {savePTF, tF1, tF2, tF3, tFPh, tFN, dvnTF};
+		        JLabel[] labelArr = {labelTitle, labelInfo1, labelInfo2, labelInfo3, labelInfo4, labelInfo5, labelInfo6};
+		        JButton[] buttonArr = {btnBigTest, btnBack, btnMakeAccount, btnUnlockWithBrowser, btnLoginQA, btnStartAppium, btnClearOrders, btnRunOrders, btnGetLog};
+		        JTextField[] tfArr = {tfInfo1,tfInfo2, tfInfo3, tfInfo4, tfInfo5, tfInfo6};
 		        
 //		        SET PROPERTIES
 		        for(int i=0;i<panelArr.length;i++) {
@@ -146,31 +120,25 @@ public class SnapManualGUI implements ActionListener {
 		        	buttonArr[i].setBackground(vars.btnBGColor);
 		        	buttonArr[i].setForeground(vars.btnFGColor);
 		        };
-		        for(int i=0;i<tFArr.length;i++) {
+		        for(int i=0;i<tfArr.length;i++) {
 		        	tFArr[i].setBackground(vars.tfBGColor);
 		        	tFArr[i].setForeground(vars.tfFGColor);
 		        };
+		        this.orderList = new ArrayList<Order>();
 		        mp.setLayout(new BoxLayout(mp, BoxLayout.Y_AXIS));
 		        labelTitle.setForeground(Color.YELLOW);
 		        labelTitle.setFont(new Font(null, Font.BOLD, 22));
-		        tF1.setPreferredSize(new Dimension(120, 30));
-		        tF2.setPreferredSize(new Dimension(120, 30));
-		        dvnTF.setPreferredSize(new Dimension(120, 30));
-		        tF3.setPreferredSize(new Dimension(30, 30));
-		        tFPh.setPreferredSize(new Dimension(90, 30));
-		        tFN.setPreferredSize(new Dimension(90, 30));
-		        savePTF.setPreferredSize(new Dimension(90, 30));
-		        loadBox.setPreferredSize(new Dimension(90, 30));
-				emlBtn.setForeground(labelTitle.getForeground());
-				emlBtn.setFont(new Font(null, Font.BOLD, 13));
-				rphBtn.setForeground(null);
-				runBtn.setForeground(Color.RED);
-				getLogBtn.setEnabled(false);
-				loadBox.setBackground(vars.tfBGColor);
-				loadBox.setForeground(vars.tfFGColor);
+		        tfInfo1.setPreferredSize(new Dimension(120, 30));
+		        tfInfo2.setPreferredSize(new Dimension(120, 30));
+		        tfInfo3.setPreferredSize(new Dimension(120, 30));
+		        tfInfo4.setPreferredSize(new Dimension(120, 30));
+		        tfInfo5.setPreferredSize(new Dimension(120, 30));
+		        tfInfo6.setPreferredSize(new Dimension(120, 30));
+				btnRunOrders.setForeground(Color.RED);
+				btnGetLog.setEnabled(false);
 		        
 //		        BUTTON ACTIONS
-		        back.addActionListener(new ActionListener() {
+		        btnBack.addActionListener(new ActionListener() {
 
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
@@ -179,7 +147,7 @@ public class SnapManualGUI implements ActionListener {
 					}
 
 		        });
-		        bigTest.addActionListener(new ActionListener() {
+		        btnBigTest.addActionListener(new ActionListener() {
 
 					public void actionPerformed(ActionEvent arg0) {
 //						// TODO Auto-generated method stub
@@ -202,19 +170,31 @@ public class SnapManualGUI implements ActionListener {
 		        
 //		        PANEL MAKEUP
 		        panelTop.add(labelTitle); 
-		        panelTop.add(back);  
-		        panelTop.add(bigTest);
+		        panelTop.add(btnBack);  
+		        panelTop.add(btnBigTest);
+
+		        panelInfo1.add(labelInfo1);
+		        panelInfo1.add(tfInfo1);
+		        panelInfo1.add(labelInfo2);
+		        panelInfo1.add(tfInfo2);
+		        panelInfo1.add(labelInfo3);
+		        panelInfo1.add(tfInfo3);
+		        panelInfo1.add(labelInfo4);
+		        panelInfo1.add(tfInfo4);
+		        panelInfo1.add(labelInfo5);
+		        panelInfo1.add(tfInfo5);
+		        panelInfo1.add(labelInfo6);
+		        panelInfo1.add(tfInfo6);
 		        
-		        panelInfo1.add();
-		        panelInfo2.add();
-		        panelInfo3.add();
+		        panelAction1.add(btnMakeAccount);
+		        panelAction2.add(btnUnlockWithBrowser);
+		        panelAction3.add(btnLoginQA);
 		        
-		        panelAction1.add();
-		        panelAction2.add();
-		        panelAction3.add();
-		        
-		        panelOrder1.add();
-		        panelOrder2.add();
+		        panelOrder1.add(labelOrderList);
+		        panelOrder2.add(btnStartAppium);
+		        panelOrder2.add(btnClearOrders);
+		        panelOrder2.add(btnRunOrders);
+		        panelOrder2.add(btnGetLog);
 		        
 //		        MAIN PANEL MAKEUP
 		        mp.add(panelTop);
@@ -238,7 +218,7 @@ public class SnapManualGUI implements ActionListener {
 			}
 			
 			public void setMainLog(String text) {
-				mainLog.setText(text);
+//				mainLog.setText(text);
 			}
 			
 			public static void main(String[] args) {
