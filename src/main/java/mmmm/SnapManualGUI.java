@@ -57,7 +57,7 @@ import mmmm.vars.OrderType;
 public class SnapManualGUI implements ActionListener {
 	
 	private JFrame frame;
-	private JPanel mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2;
+	private JPanel mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2, panelBottom;
 	private JLabel labelTitle, labelInfo1, labelInfo2, labelInfo3, labelInfo4, labelInfo5, labelInfo6, labelOrderList;
 	private JTextField tfInfo1, tfInfo2, tfInfo3, tfInfo4, tfInfo5, tfInfo6;
 	private JButton btnBigTest, btnBack, btnMakeAccount, btnUnlockWithBrowser, btnLoginQA, btnStartAppium, btnClearOrders, btnRunOrders, btnGetLog;
@@ -77,6 +77,7 @@ public class SnapManualGUI implements ActionListener {
 		        panelAction3 = new JPanel();  
 		        panelOrder1 = new JPanel();  
 		        panelOrder2 = new JPanel();
+		        panelBottom = new JPanel();
 		        
 //		        INITIALIZE LABELS
 		        JLabel labelTitle = new JLabel("SNAPCHAT MENU");  
@@ -108,7 +109,7 @@ public class SnapManualGUI implements ActionListener {
 		        final JTextField tfInfo6 = new JTextField("1");
 		        
 //		        ORGANIZE
-		        JPanel[] panelArr = {mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2};
+		        JPanel[] panelArr = {mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2, panelBottom};
 		        JLabel[] labelArr = {labelTitle, labelInfo1, labelInfo2, labelInfo3, labelInfo4, labelInfo5, labelInfo6, labelOrderList};
 		        JButton[] buttonArr = {btnBigTest, btnBack, btnMakeAccount, btnUnlockWithBrowser, btnLoginQA, btnStartAppium, btnClearOrders, btnRunOrders, btnGetLog};
 		        JTextField[] tfArr = {tfInfo1,tfInfo2, tfInfo3, tfInfo4, tfInfo5, tfInfo6};
@@ -234,8 +235,6 @@ public class SnapManualGUI implements ActionListener {
 		        
 //		        PANEL MAKEUP
 		        panelTop.add(labelTitle); 
-		        panelTop.add(btnBack);  
-		        panelTop.add(btnBigTest);
 
 		        panelInfo1.add(labelInfo1);
 		        panelInfo1.add(tfInfo1);
@@ -260,6 +259,9 @@ public class SnapManualGUI implements ActionListener {
 		        panelOrder2.add(btnRunOrders);
 		        panelOrder2.add(btnGetLog);
 		        
+		        panelBottom.add(btnBack);  
+		        panelBottom.add(btnBigTest);
+		        
 //		        MAIN PANEL MAKEUP
 		        mp.add(panelTop);
 		        mp.add(panelInfo1);
@@ -270,6 +272,7 @@ public class SnapManualGUI implements ActionListener {
 		        mp.add(panelAction3);
 		        mp.add(panelOrder1);
 		        mp.add(panelOrder2);
+		        mp.add(panelBottom);
 		        
 //		        FRAME MAKEUP
 		        frame.add(mp);  

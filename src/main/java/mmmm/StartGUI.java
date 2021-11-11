@@ -18,23 +18,31 @@ import javax.swing.JTextField;
 public class StartGUI {
 	
 	public JFrame frame;
-	private JPanel mp, panel1;
-	private JLabel title;
-	private JButton snapchat, close;
+	private JPanel mp, panel1, panel2, panel3, panel4, panel5;
+	private JLabel title, labelChoose;
+	private JButton snapchat, instagram, reddit, linkedin, close;
 	
 	public StartGUI() {
 //		INITIALIZE VARIABLES
         frame = new JFrame("Multi Media Marketing Menu");
         mp = new JPanel();
         panel1 = new JPanel();  
-        JLabel title = new JLabel("Snapchat Networker");  
-        JButton snapchat = new JButton("Open Snapchat Networker");  
+        panel2 = new JPanel();  
+        panel3 = new JPanel();  
+        panel4 = new JPanel();  
+        panel5 = new JPanel();  
+        JButton snapchat = new JButton("Snapchat");  
+        JButton instagram = new JButton("Instagram");  
+        JButton reddit = new JButton("Reddit");  
+        JButton linkedin = new JButton("LinkedIn");  
         JButton close = new JButton("Close");  
+        JLabel title = new JLabel("4M");  
+        JLabel labelChoose = new JLabel("Choose Platform");
         
 //        ORGANIZE
-        JPanel[] panelArr = {mp, panel1};
-        JLabel[] labelArr = {title};
-        JButton[] buttonArr = {snapchat, close};
+        JPanel[] panelArr = {mp, panel1, panel2, panel3, panel4, panel5};
+        JLabel[] labelArr = {title, labelChoose};
+        JButton[] buttonArr = {snapchat, instagram, reddit, linkedin, close};
         
 //        SET PROPERTIES
         for(int i=0;i<panelArr.length;i++) {
@@ -67,15 +75,23 @@ public class StartGUI {
         
 //        PANEL MAKEUP
         panel1.add(title);  
-        panel1.add(snapchat);  
-        panel1.add(close);  
+        panel2.add(labelChoose);
+        panel3.add(snapchat);
+        panel3.add(instagram);
+        panel4.add(reddit);
+        panel4.add(linkedin);  
+        panel5.add(close);  
         
 //        MAIN PANEL MAKEUP
         mp.add(panel1);
+        mp.add(panel2);
+        mp.add(panel3);
+        mp.add(panel4);
+        mp.add(panel5);
         
 //        FRAME MAKEUP
         frame.add(mp);  
-        frame.setSize(700, 450);  
+        frame.setSize(300, 250);  
         frame.setLocationRelativeTo(null);  
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);  

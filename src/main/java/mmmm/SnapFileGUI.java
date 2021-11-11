@@ -4,37 +4,49 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 
 //THIS IS THE GUI WITH THE SNAP GUI VIA FILE ORDER
 public class SnapFileGUI {
 	
 	private JFrame frame;
-	public JPanel mp, panel1, panel2;
-	private JLabel title;
-	private JButton menuOrder, fileOrder, back;
+	public JPanel mp, panelTop, panel1, panel2, panel3, panel4, panelBottom;
+	private JLabel title, labelOrderByFile, labelOrderList;
+	private JButton btnBack, btnClearOrders, btnRunOrders, btnGetLog;
 	
 	public SnapFileGUI() {
 		
 //		INITIALIZE VARIABLES
         frame = new JFrame("MMMM: Snapchat Text Order");
         mp = new JPanel();
+        panelTop = new JPanel();  
         panel1 = new JPanel();  
         panel2 = new JPanel();  
+        panel3 = new JPanel();  
+        panel4 = new JPanel();  
+        panelBottom = new JPanel();  
         JLabel title = new JLabel("SNAPCHAT TEXT ORDER");  
-        JButton menuOrder = new JButton("Order With Menu");  
-        JButton fileOrder = new JButton("Order With File");  
-        JButton back = new JButton("Back");
+        JLabel labelOrderByFile = new JLlabelFileSelectedabel("Choose a file: .txt ...");
+        JLabel labelOrderList = new JLabel("Orders: ");
+        JButton btnBack = new JButton("Back");  
+        JButton btnFileOrder = new JButton("Select File");  
+        JButton btnClearOrders = new JButton("Clear Orders");
+        JButton btnRunOrders = new JButton("Run Orders");
+        JButton btnGetLog = new JButton("Get Log");
+        JTextField tf1 = new JTextField("TEXT ORDER FORMAT");
         
 //        ORGANIZE
-        JPanel[] panelArr = {mp, panel1, panel2};
-        JLabel[] labelArr = {title};
-        JButton[] buttonArr = {menuOrder, fileOrder, back};
+        JPanel[] panelArr = {mp, panelTop, panel1, panel2, panel3, panel4, panelBottom};
+        JLabel[] labelArr = {title, labelOrderByFile, labelOrderList};
+        JButton[] buttonArr = {btnBack, btnFileOrder, btnClearOrders, btnRunOrders, btnGetLog};
         
 //        SET PROPERTIES
         for(int i=0;i<panelArr.length;i++) {
@@ -49,30 +61,41 @@ public class SnapFileGUI {
         	buttonArr[i].setBackground(vars.btnBGColor);
         	buttonArr[i].setForeground(vars.btnFGColor);
         };
+        tf1.setBackground(vars.tfBGColor);
+        tf1.setForeground(vars.tfFGColor);
+        tf1.setPreferredSize(new Dimension(400, 200));
+        btnRunOrders.setForeground(Color.RED);
         mp.setLayout(new BoxLayout(mp, BoxLayout.Y_AXIS));
         title.setForeground(Color.YELLOW);
         title.setFont(new Font(null, Font.BOLD, 22));
         
 //		SETUP BUTTON ACTION LISTENERS
-        menuOrder.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-        });
+//        menuOrder.addActionListener(new ActionListener() {
+//
+//			public void actionPerformed(ActionEvent arg0) {
+//				// TODO Auto-generated method stub
+//
+//			}
+//
+//        });
+//        
+//        fileOrder.addActionListener(new ActionListener() {
+//
+//			public void actionPerformed(ActionEvent arg0) {
+//				// TODO Auto-generated method stub
+//
+//			}
+//
+//        });
         
-        fileOrder.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
+        btnFileOrder.addActionListener(new ActionListener() {
+        	
+        	public void actionPerformed(ActionEvent arg0) {
+        		// TODO Auto-generated method stub
+        	}
+        	
         });
-        
-        back.addActionListener(new ActionListener() {
+        btnBack.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
@@ -83,19 +106,26 @@ public class SnapFileGUI {
         });
         
 //        PANEL MAKEUP
-        panel1.add(title);  
-        panel1.add(back);
-        
-        panel2.add(menuOrder);  
-        panel2.add(fileOrder);  
+        panelTop.add(title);  
+        panel1.add(labelOrderByFile);
+        panel2.add(btnFileOrder);
+        panel3.add(labelOrderList);
+        panel4.add(btnClearOrders);
+        panel4.add(btnRunOrders);
+        panel4.add(btnGetLog);
+        panelBottom.add(btnBack);
         
 //        MAIN PANEL MAKEUP
+        mp.add(panelTop);
         mp.add(panel1);
         mp.add(panel2);
+        mp.add(panel3);
+        mp.add(panel4);
+        mp.add(panelBottom);
         
 //        FRAME MAKEUP
         frame.add(mp);  
-        frame.setSize(700, 450);  
+        frame.setSize(400, 300);  
         frame.setLocationRelativeTo(null);  
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);  

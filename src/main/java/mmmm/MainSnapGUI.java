@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 public class MainSnapGUI {
 
 	private JFrame frame;
-	public JPanel mp, panel1, panel2;
+	public JPanel mp, panel1, panel2, panel3;
 	private JLabel title;
 	private JButton menuOrder, fileOrder, back;
 	
@@ -25,13 +25,14 @@ public class MainSnapGUI {
         mp = new JPanel();
         panel1 = new JPanel();  
         panel2 = new JPanel();  
-        JLabel title = new JLabel("WELCOME TO SNAPCHAT NETWORKER");  
+        panel3 = new JPanel();  
+        JLabel title = new JLabel("SNAPCHAT NETWORKER");  
         JButton menuOrder = new JButton("Order With Menu");  
-        JButton fileOrder = new JButton("Order With File");  
+        JButton fileOrder = new JButton("Order With Text");  
         JButton back = new JButton("Back");
         
 //        ORGANIZE
-        JPanel[] panelArr = {mp, panel1, panel2};
+        JPanel[] panelArr = {mp, panel1, panel2, panel3};
         JLabel[] labelArr = {title};
         JButton[] buttonArr = {menuOrder, fileOrder, back};
         
@@ -85,18 +86,18 @@ public class MainSnapGUI {
         
 //        PANEL MAKEUP
         panel1.add(title);  
-        panel1.add(back);
-        
         panel2.add(menuOrder);  
         panel2.add(fileOrder);  
+        panel3.add(back);
         
 //        MAIN PANEL MAKEUP
         mp.add(panel1);
         mp.add(panel2);
+        mp.add(panel3);
         
 //        FRAME MAKEUP
         frame.add(mp);  
-        frame.setSize(700, 450);  
+        frame.setSize(400, 200);  
         frame.setLocationRelativeTo(null);  
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);  
