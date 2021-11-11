@@ -34,7 +34,7 @@ public class SnapFileGUI {
         panel4 = new JPanel();  
         panelBottom = new JPanel();  
         JLabel title = new JLabel("SNAPCHAT TEXT ORDER");  
-        JLabel labelOrderByFile = new JLlabelFileSelectedabel("Choose a file: .txt ...");
+        JLabel labelOrderByFile = new JLabel("Choose a file: .txt ...");
         JLabel labelOrderList = new JLabel("Orders: ");
         JButton btnBack = new JButton("Back");  
         JButton btnFileOrder = new JButton("Select File");  
