@@ -78,15 +78,15 @@ public class StartGUI {
 			}
 
         });
-        close.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				System.out.println("Closing!");
-				System.exit(0);
-			}
-
-        });
+//        close.addActionListener(new ActionListener() {
+//
+//			public void actionPerformed(ActionEvent arg0) {
+//				// TODO Auto-generated method stub
+//				System.out.println("Closing!");
+//				System.exit(0);
+//			}
+//
+//        });
         
 //        PANEL MAKEUP
         panel1.add(title);  
