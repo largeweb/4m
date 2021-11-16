@@ -48,11 +48,8 @@ public class Emulator {
 		if(this.isActive) {
 			throw new Exception("THREAD IS ALREADY ACTIVE");
 		}
-		this.isActive = true;
-		
-		
-		
-		this.isActive = false;
+//		this.isActive = true;
+//		this.isActive = false;
 	}
 	
 	public AndroidDriver<AndroidElement> getDriver() {

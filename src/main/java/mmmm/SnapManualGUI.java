@@ -60,7 +60,7 @@ public class SnapManualGUI implements ActionListener {
 	private JPanel mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2, panelBottom;
 	private JLabel labelTitle, labelInfo1, labelInfo2, labelInfo3, labelInfo4, labelInfo5, labelInfo6, labelOrderList;
 	private JTextField tfInfo1, tfInfo2, tfInfo3, tfInfo4, tfInfo5, tfInfo6;
-	private JButton btnBigTest, btnBack, btnMakeAccount, btnUnlockWithBrowser, btnLoginQA, btnStartAppium, btnClearOrders, btnRunOrders, btnGetLog;
+	private JButton btnBigTest, btnBack, btnMakeAccount, btnUnlockWithBrowser, btnLoginQA, btnDM, btnDMA, btnBAU, btnStartAppium, btnClearOrders, btnRunOrders, btnGetLog;
 	private ArrayList<Order> orderList;
 	
 	public SnapManualGUI() {
@@ -95,6 +95,9 @@ public class SnapManualGUI implements ActionListener {
 		        JButton btnMakeAccount = new JButton("Make Account");
 		        JButton btnUnlockWithBrowser = new JButton("Unlock With Browser");
 		        JButton btnLoginQA = new JButton("Login and Quick Add");
+		        JButton btnDM = new JButton("DM Username");
+		        JButton btnDMA = new JButton("DM All");
+		        JButton btnBAU = new JButton("Blue Arrow Username");
 		        JButton btnStartAppium = new JButton("Start Appium");
 		        JButton btnClearOrders = new JButton("Clear Orders");
 		        JButton btnRunOrders = new JButton("Run Orders");
@@ -111,7 +114,7 @@ public class SnapManualGUI implements ActionListener {
 //		        ORGANIZE
 		        JPanel[] panelArr = {mp, panelTop, panelInfo1, panelInfo2, panelInfo3, panelAction1, panelAction2, panelAction3, panelOrder1, panelOrder2, panelBottom};
 		        JLabel[] labelArr = {labelTitle, labelInfo1, labelInfo2, labelInfo3, labelInfo4, labelInfo5, labelInfo6, labelOrderList};
-		        JButton[] buttonArr = {btnBigTest, btnBack, btnMakeAccount, btnUnlockWithBrowser, btnLoginQA, btnStartAppium, btnClearOrders, btnRunOrders, btnGetLog};
+		        JButton[] buttonArr = {btnBigTest, btnBack, btnMakeAccount, btnUnlockWithBrowser, btnLoginQA, btnDM, btnDMA, btnBAU, btnStartAppium, btnClearOrders, btnRunOrders, btnGetLog};
 		        JTextField[] tfArr = {tfInfo1,tfInfo2, tfInfo3, tfInfo4, tfInfo5, tfInfo6};
 		        
 //		        SET PROPERTIES
@@ -252,6 +255,9 @@ public class SnapManualGUI implements ActionListener {
 		        panelAction1.add(btnMakeAccount);
 		        panelAction1.add(btnUnlockWithBrowser);
 		        panelAction1.add(btnLoginQA);
+		        panelAction2.add(btnDM);
+		        panelAction2.add(btnDMA);
+		        panelAction2.add(btnBAU);
 		        
 		        panelOrder1.add(labelOrderList);
 		        panelOrder2.add(btnStartAppium);

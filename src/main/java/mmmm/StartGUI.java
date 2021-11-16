@@ -18,9 +18,9 @@ import javax.swing.JTextField;
 public class StartGUI {
 	
 	public JFrame frame;
-	private JPanel mp, panel1, panel2, panel3, panel4, panel5;
+	private JPanel mp, panel1, panel2, panel3, panel4, panel5, panel6;
 	private JLabel title, labelChoose;
-	private JButton snapchat, instagram, reddit, linkedin, close;
+	private JButton snapchat, instagram, reddit, linkedin, facebook, twitter, quora, discord, youtube, close;
 	
 	public StartGUI() {
 //		INITIALIZE VARIABLES
@@ -31,18 +31,24 @@ public class StartGUI {
         panel3 = new JPanel();  
         panel4 = new JPanel();  
         panel5 = new JPanel();  
+        panel6 = new JPanel();  
         JButton snapchat = new JButton("Snapchat");  
         JButton instagram = new JButton("Instagram");  
         JButton reddit = new JButton("Reddit");  
         JButton linkedin = new JButton("LinkedIn");  
+        JButton facebook = new JButton("Facebook");  
+        JButton twitter = new JButton("Twitter");  
+        JButton quora = new JButton("Quora");  
+        JButton discord = new JButton("Discord");  
+        JButton youtube = new JButton("YouTube");  
         JButton close = new JButton("Close");  
         JLabel title = new JLabel("4M");  
         JLabel labelChoose = new JLabel("Choose Platform");
         
 //        ORGANIZE
-        JPanel[] panelArr = {mp, panel1, panel2, panel3, panel4, panel5};
+        JPanel[] panelArr = {mp, panel1, panel2, panel3, panel4, panel5, panel6};
         JLabel[] labelArr = {title, labelChoose};
-        JButton[] buttonArr = {snapchat, instagram, reddit, linkedin, close};
+        JButton[] buttonArr = {snapchat, instagram, reddit, linkedin,facebook, twitter, quora, discord, youtube, close};
         
 //        SET PROPERTIES
         for(int i=0;i<panelArr.length;i++) {
@@ -72,15 +78,29 @@ public class StartGUI {
 			}
 
         });
+        close.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("Closing!");
+				System.exit(0);
+			}
+
+        });
         
 //        PANEL MAKEUP
         panel1.add(title);  
         panel2.add(labelChoose);
         panel3.add(snapchat);
         panel3.add(instagram);
-        panel4.add(reddit);
-        panel4.add(linkedin);  
-        panel5.add(close);  
+        panel3.add(reddit);
+        panel4.add(linkedin);
+        panel4.add(facebook);
+        panel4.add(twitter);  
+        panel5.add(quora);
+        panel5.add(discord);
+        panel5.add(youtube);
+        panel6.add(close);  
         
 //        MAIN PANEL MAKEUP
         mp.add(panel1);
@@ -88,10 +108,11 @@ public class StartGUI {
         mp.add(panel3);
         mp.add(panel4);
         mp.add(panel5);
+        mp.add(panel6);
         
 //        FRAME MAKEUP
         frame.add(mp);  
-        frame.setSize(300, 250);  
+        frame.setSize(400, 300);  
         frame.setLocationRelativeTo(null);  
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);  

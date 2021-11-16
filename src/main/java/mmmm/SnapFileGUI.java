@@ -32,7 +32,7 @@ public class SnapFileGUI {
         panel2 = new JPanel();  
         panel3 = new JPanel();  
         panel4 = new JPanel();  
-        panelBottom = new JPanel();  
+        panelBottom = new JPanel();
         JLabel title = new JLabel("SNAPCHAT TEXT ORDER");  
         JLabel labelOrderByFile = new JLabel("Choose a file: .txt ...");
         JLabel labelOrderList = new JLabel("Orders: ");
@@ -125,7 +125,7 @@ public class SnapFileGUI {
         
 //        FRAME MAKEUP
         frame.add(mp);  
-        frame.setSize(400, 300);  
+        frame.setSize(400, 250);  
         frame.setLocationRelativeTo(null);  
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);  
