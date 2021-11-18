@@ -48,7 +48,7 @@ public class StartGUI {
 //        ORGANIZE
         JPanel[] panelArr = {mp, panel1, panel2, panel3, panel4, panel5, panel6};
         JLabel[] labelArr = {title, labelChoose};
-        JButton[] buttonArr = {snapchat, instagram, reddit, linkedin,facebook, twitter, quora, discord, youtube, close};
+        JButton[] buttonArr = {snapchat, instagram, reddit, linkedin, facebook, twitter, quora, discord, youtube, close};
         
 //        SET PROPERTIES
         for(int i=0;i<panelArr.length;i++) {
@@ -72,9 +72,89 @@ public class StartGUI {
 
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				System.out.println("test1");
+				System.out.println("snapchat button clicked");
 				RunnableThread verifySnap = new RunnableThread("verifysnap");
 				verifySnap.run();
+			}
+
+        });
+        instagram.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("NIY Feature Clicked");
+				RunnableThread niy = new RunnableThread("niy");
+				niy.run();
+			}
+
+        });
+        reddit.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("NIY Feature Clicked");
+				RunnableThread niy = new RunnableThread("niy");
+				niy.run();
+			}
+
+        });
+        linkedin.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("NIY Feature Clicked");
+				RunnableThread niy = new RunnableThread("niy");
+				niy.run();
+			}
+
+        });
+        facebook.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("NIY Feature Clicked");
+				RunnableThread niy = new RunnableThread("niy");
+				niy.run();
+			}
+
+        });
+        twitter.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("NIY Feature Clicked");
+				RunnableThread niy = new RunnableThread("niy");
+				niy.run();
+			}
+
+        });
+        quora.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("NIY Feature Clicked");
+				RunnableThread niy = new RunnableThread("niy");
+				niy.run();
+			}
+
+        });
+        discord.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("NIY Feature Clicked");
+				RunnableThread niy = new RunnableThread("niy");
+				niy.run();
+			}
+
+        });
+        youtube.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("NIY Feature Clicked");
+				RunnableThread niy = new RunnableThread("niy");
+				niy.run();
 			}
 
         });

@@ -21,6 +21,11 @@ public class RunnableThread implements Runnable {
 				System.out.println("RUNNING THE MAIN SNAP GUI");
 				new MainSnapGUI();
 				Main.startGUI.frame.dispose();
+			}			
+			if(threadName == "niy") {
+				System.out.println("RUNNING NIY GUI");
+				new NIYGUI();
+				Main.startGUI.frame.dispose();
 			}
 		} catch (Exception e) {}
 	}
